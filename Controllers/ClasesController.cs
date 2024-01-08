@@ -178,6 +178,7 @@ namespace GYMBros_GABGS.Controllers
         {
             return _context.Clases.Any(e => e.Idclase == id);
         }
+
         [HttpDelete]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConJs(Clase clase)

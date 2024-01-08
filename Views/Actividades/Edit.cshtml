@@ -1,13 +1,14 @@
 ﻿@model GYMBros_GABGS.Models.Actividade
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Edit</h1>
-
-<h4>Actividade</h4>
+<h1>Editar Activida</h1>
+<br>
+<h4>Actividades</h4>
 <hr />
+<br>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -18,17 +19,20 @@
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary"> <i class="bi bi-arrow-return-left"></i> Volver a Actividades</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

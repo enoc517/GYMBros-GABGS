@@ -153,5 +153,22 @@ namespace GYMBros_GABGS.Controllers
         {
             return _context.Salas.Any(e => e.Idsala == id);
         }
+
+
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConJs(Sala salas)
+        {
+            string mensaje = "Error al borrar registro";
+            var encontrado = _context.Salas.Find(salas.Idsala);
+            if (encontrado != null)
+            {
+                _context.Salas.Remove(encontrado);
+                _context.SaveChanges();
+                mensaje = "Registro borrado!";
+            }
+
+            return Json(new { result = true, mensaje = mensaje });
+        }
     }
 }
