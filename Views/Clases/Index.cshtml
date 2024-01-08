@@ -1,0 +1,110 @@
+﻿@model IEnumerable<GYMBros_GABGS.Models.Clase>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="clase">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaClase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdactividadNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdempleadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdmatriculaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdsalaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaClase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdactividadNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdempleadoNavigation.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdmatriculaNavigation.Idmatricula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdsalaNavigation.Descripción)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idclase">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idclase">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idclase">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section scripts {
+    <script>
+        let table = new DataTable('#clase', {
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay registros",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "width": "100%"
+        });
+    </script>
+}
