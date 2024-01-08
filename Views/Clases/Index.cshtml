@@ -1,89 +1,92 @@
 ﻿@model IEnumerable<GYMBros_GABGS.Models.Clase>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clase";
 }
 
-<h1>Index</h1>
-
+<h1>Clases</h1>
+<br>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-lg"></i>Agregar Nueva Clase</a>
 </p>
-<table class="table" id="clase">
+<table class="table" id="tblClases">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FechaClase)
+                Fecha
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
+                Inicio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraFin)
+                Fin
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                Estado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Capacidad)
+                Capacidad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdactividadNavigation)
+                Actividad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdempleadoNavigation)
+                Empleado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdmatriculaNavigation)
+                Matricula
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdsalaNavigation)
+               Sala
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaClase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoraFin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdactividadNavigation.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdempleadoNavigation.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdmatriculaNavigation.Idmatricula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdsalaNavigation.Descripción)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Idclase">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Idclase">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Idclase">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaClase)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdactividadNavigation.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdempleadoNavigation.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdmatriculaNavigation.Idmatricula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdsalaNavigation.Descripción)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Idclase" class="btn btn-warning"> <i class="bi bi-pen"></i> Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Idclase" class="btn btn-secondary"> <i class="bi bi-eye"></i> detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Idclase" class="btn btn-danger"> <i class="bi bi-trash2"></i> Elimninar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+
 @section scripts {
     <script>
-        let table = new DataTable('#clase', {
+        let table = new DataTable('#tblClases', {
             "language": {
                 "decimal": "",
                 "emptyTable": "No hay registros",

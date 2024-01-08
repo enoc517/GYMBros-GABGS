@@ -155,21 +155,6 @@ namespace GYMBros_GABGS.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConJs(Empleado empleados)
-        {
-            string mensaje = "Error al borrar registro";
-            var encontrado = _context.Empleados.Find(empleados.Idempleado);
-            if (encontrado != null)
-            {
-                _context.Empleados.Remove(encontrado);
-                _context.SaveChanges();
-                mensaje = "Registro borrado!";
-            }
-
-            return Json(new { result = true, mensaje = mensaje });
-        }
 
         private bool EmpleadoExists(int id)
         {
