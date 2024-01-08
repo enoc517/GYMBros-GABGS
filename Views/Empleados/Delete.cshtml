@@ -85,10 +85,10 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete" id="elimarempleado">
+    <form asp-action="Delete" id="eliminarEmpleado">
         <input type="hidden" asp-for="Idempleado" />
-        <input type="button" id="btnDeleteJs" value="Eliminar" class="btn btn-danger" />  |
-        <a asp-action="Index">Back to List</a>
+        <input type="button" id="btnDeleteJs" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning"><i class="bi bi-arrow-return-left">Regresar a la Lista</i></a>
     </form>
 </div>
 @section Scripts {
@@ -98,7 +98,7 @@
     <script>
         async function fetchData() {
 
-            const dataform = new FormData(document.querySelector('#elimarempleado'));
+            const dataform = new FormData(document.querySelector('#eliminarEmpleado'));
             const response = await fetch('/Empleados/DeleteConJs',
                 {
                     method: 'Delete',

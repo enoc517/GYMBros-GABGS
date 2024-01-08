@@ -69,6 +69,7 @@ namespace GYMBros_GABGS.Controllers
             return View(empleado);
         }
 
+
         // GET: Empleados/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -157,10 +158,10 @@ namespace GYMBros_GABGS.Controllers
         }
         [HttpDelete]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConJs(Empleado empleados)
+        public ActionResult DeleteConJs(Empleado empleado)
         {
             string mensaje = "Error al borrar registro";
-            var encontrado = _context.Empleados.Find(empleados.Idempleado);
+            var encontrado = _context.Empleados.Find(empleado.Idempleado);
             if (encontrado != null)
             {
                 _context.Empleados.Remove(encontrado);
@@ -170,7 +171,6 @@ namespace GYMBros_GABGS.Controllers
 
             return Json(new { result = true, mensaje = mensaje });
         }
-
         private bool EmpleadoExists(int id)
         {
             return _context.Empleados.Any(e => e.Idempleado == id);

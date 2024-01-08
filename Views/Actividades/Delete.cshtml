@@ -19,9 +19,79 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Delete" id="EliminarActividades">
         <input type="hidden" asp-for="Idactividades" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="button" id="btnDeleteJs" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning"><i class="bi bi-arrow-return-left">Regresar a la Lista</i></a>
     </form>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        async function fetchData() {
+
+            const dataform = new FormData(document.querySelector('#EliminarActividades'));
+            const response = await fetch('/Actividades/DeleteConJs',
+                {
+                    method: 'Delete',
+                    body: dataform
+                });
+            const result = await response.json();
+            return result;
+        }
+        async function deleteCategoria() {
+            try {
+                var response = await fetchData();
+                if (response.result) {
+                    console.log(response.result);
+                    Swal.fire({
+                        title: "El registro fue borrado exitosamente!",
+                        icon: "info",
+                        timer: 2000,
+                        timerProgressBar: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            timerInterval = setInterval(() => {
+                            }, 100);
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        window.location.href = '@Url.Action("Index", "Actividades")'
+                    });
+
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: response.mensaje,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector("#btnDeleteJs").addEventListener('click', () => {
+                Swal.fire({
+                    title: "Está seguro de eliminar el registor?",
+                    text: "Tome en cuenta que es un proceso irreversible",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, borrar!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        deleteCategoria();
+                    }
+                });
+            })
+        });
+    </script>
+}

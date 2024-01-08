@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Create";
 }
-<h1>Nuevo</h1>
+
+<h1>Crear</h1>
 
 <h4>Empleado</h4>
 <hr />
@@ -13,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <h6>Puesto</h6>
-                <select asp-for="Idpuesto" class="form-control" asp-items="ViewBag.Idpuesto"></select>
+                <select asp-for="Idpuesto" class ="form-control" asp-items="ViewBag.Idpuesto"></select>
             </div>
             <div class="form-group">
                 <h6>Nombre</h6>
@@ -21,37 +22,37 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Apellidos</h6>
+                <label asp-for="Apellidos" class="control-label"></label>
                 <input asp-for="Apellidos" class="form-control" />
                 <span asp-validation-for="Apellidos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Direccion</h6>
+                <label asp-for="Dirreccion" class="control-label"></label>
                 <input asp-for="Dirreccion" class="form-control" />
                 <span asp-validation-for="Dirreccion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Telefono</h6>
+                <label asp-for="Telefono" class="control-label"></label>
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Cedula</h6>
+                <label asp-for="Cedula" class="control-label"></label>
                 <input asp-for="Cedula" class="form-control" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Fecha Contratacion</h6>
+                <label asp-for="FechaContratacion" class="control-label"></label>
                 <input asp-for="FechaContratacion" class="form-control" />
                 <span asp-validation-for="FechaContratacion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>Fecha de Pago</h6>
+                <label asp-for="FechaPago" class="control-label"></label>
                 <input asp-for="FechaPago" class="form-control" />
                 <span asp-validation-for="FechaPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>CategoriaProfesional</h6>
+                <label asp-for="CategoriaProfesional" class="control-label"></label>
                 <input asp-for="CategoriaProfesional" class="form-control" />
                 <span asp-validation-for="CategoriaProfesional" class="text-danger"></span>
             </div>
@@ -61,17 +62,19 @@
                 <span asp-validation-for="NumSeguridadSocial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>CuentaBancaria</h6>
+                <label asp-for="CuentaBancaria" class="control-label"></label>
                 <input asp-for="CuentaBancaria" class="form-control" />
                 <span asp-validation-for="CuentaBancaria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <h6>RetencionCcss</h6>
+                <label asp-for="RetencionCcss" class="control-label"></label>
                 <input asp-for="RetencionCcss" class="form-control" />
                 <span asp-validation-for="RetencionCcss" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <a asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-circle"> Crear</i></a>
+              
+                <button type="submit" class="btn btn-success"><i class="bi bi-plus-circle"> Crear</i></button>
+                
             </div>
         </form>
     </div>
@@ -82,7 +85,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

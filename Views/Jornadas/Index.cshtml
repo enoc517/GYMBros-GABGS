@@ -4,25 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Jornadas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-circle"> Crear nueva Jornada </i></a>
 </p>
-<table class="table">
+<table class="table" id="tbljornadas">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
+                <h6>Fecha de Inicio</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaFin)
+                <h6>Fecha de Finalizacion</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HorasTrabajadas)
+                <h6>Horas Trabajadas</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdempleadoNavigation)
+                <h6>Empleado</h6>
             </th>
             <th></th>
         </tr>
@@ -43,11 +43,38 @@
                 @Html.DisplayFor(modelItem => item.IdempleadoNavigation.Apellidos)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Idjornadas">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Idjornadas">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Idjornadas">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Idjornadas" class="btn btn-warning"> <i class="bi bi-pencil-fill"> Editar</i> </a> |
+                    <a asp-action="Details" asp-route-id="@item.Idjornadas" class="btn btn-secondary"> <i class="bi bi-info-circle-fill"> Ver</i> </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Idjornadas" class="btn btn-danger"> <i class="bi bi-x-circle-fill"> Borrar</i> </a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+@section scripts {
+    <script>
+        let table = new DataTable('#tbljornadas', {
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay registros",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 de 0 de 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "width": "100%"
+        });
+    </script>
+}
