@@ -4,98 +4,133 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Empleado</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-circle"> Crear nuevo Empleado </i></a>
 </p>
+<<<<<<< HEAD
 <table class="table">
+=======
+<table class="table" id="tblEmpleado">
+>>>>>>> empleadoyjornada
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                <h6>Nombre</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellidos)
+                <h6>Apellidos</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dirreccion)
+                <h6>Direccion</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
+                <h6>Telefono</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cedula)
+                <h6>Cedula</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaContratacion)
+                <h6>Fecha Contratacion</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaPago)
+                <h6>Fecha de Pago</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoriaProfesional)
+                <h6>Categoria Profesional</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumSeguridadSocial)
+                <h6>Num Seguridad Social</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CuentaBancaria)
+                <h6>Cuenta Bancaria</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RetencionCcss)
+                <h6>Retencion Ccss</h6>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdpuestoNavigation)
+                <h6>Puesto</h6>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dirreccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaContratacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaProfesional)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumSeguridadSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CuentaBancaria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RetencionCcss)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdpuestoNavigation.CategoriaPuesto)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Idempleado">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Idempleado">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Idempleado">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dirreccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaContratacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPago)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaProfesional)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumSeguridadSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuentaBancaria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetencionCcss)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdpuestoNavigation.CategoriaPuesto)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Idempleado" class="btn btn-warning"> <i class="bi bi-pencil-fill"> Editar</i> </a> |
+                    <a asp-action="Details" asp-route-id="@item.Idempleado" class="btn btn-secondary"> <i class="bi bi-info-circle-fill"> Ver</i> </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Idempleado" class="btn btn-danger"> <i class="bi bi-x-circle-fill"> Borrar</i> </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<<<<<<< HEAD
+=======
+@section scripts {
+    <script>
+        let table = new DataTable('#tblEmpleado', {
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay registros",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 de 0 de 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "width": "100%"
+        });
+    </script>
+}
+>>>>>>> empleadoyjornada

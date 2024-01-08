@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GYMBros_GABGS.Models;
 
@@ -18,9 +19,9 @@ public partial class Empleado
     public int Telefono { get; set; }
 
     public int Cedula { get; set; }
-
+    [DataType(DataType.Date)]
     public DateOnly FechaContratacion { get; set; }
-
+    [DataType(DataType.Date)]
     public DateOnly FechaPago { get; set; }
 
     public string CategoriaProfesional { get; set; }

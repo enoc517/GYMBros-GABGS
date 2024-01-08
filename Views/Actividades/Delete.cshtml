@@ -19,6 +19,7 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
     </dl>
+<<<<<<< HEAD
 
     <form asp-action="Delete" id="AlertaEmergente">
         <input type="hidden" asp-for="Idactividades" />
@@ -28,6 +29,15 @@
 </div>
 
 
+=======
+    
+    <form asp-action="Delete" id="EliminarActividades">
+        <input type="hidden" asp-for="Idactividades" />
+        <input type="button" id="btnDeleteJs" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning"><i class="bi bi-arrow-return-left">Regresar a la Lista</i></a>
+    </form>
+</div>
+>>>>>>> empleadoyjornada
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -35,7 +45,11 @@
     <script>
         async function fetchData() {
 
+<<<<<<< HEAD
             const dataform = new FormData(document.querySelector('#AlertaEmergente'));
+=======
+            const dataform = new FormData(document.querySelector('#EliminarActividades'));
+>>>>>>> empleadoyjornada
             const response = await fetch('/Actividades/DeleteConJs',
                 {
                     method: 'Delete',
@@ -44,8 +58,12 @@
             const result = await response.json();
             return result;
         }
+<<<<<<< HEAD
 
         async function deleteActividades() {
+=======
+        async function deleteCategoria() {
+>>>>>>> empleadoyjornada
             try {
                 var response = await fetchData();
                 if (response.result) {
@@ -53,7 +71,11 @@
                     Swal.fire({
                         title: "El registro fue borrado exitosamente!",
                         icon: "info",
+<<<<<<< HEAD
                         timer: 1500,
+=======
+                        timer: 2000,
+>>>>>>> empleadoyjornada
                         timerProgressBar: false,
                         didOpen: () => {
                             Swal.showLoading();
@@ -80,11 +102,18 @@
                 console.log(error);
             }
         }
+<<<<<<< HEAD
 
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelector("#btnDeleteJs").addEventListener('click', () => {
                 Swal.fire({
                     title: "Está seguro de eliminar el registro?",
+=======
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector("#btnDeleteJs").addEventListener('click', () => {
+                Swal.fire({
+                    title: "Está seguro de eliminar el registor?",
+>>>>>>> empleadoyjornada
                     text: "Tome en cuenta que es un proceso irreversible",
                     icon: "warning",
                     showCancelButton: true,
@@ -93,11 +122,19 @@
                     confirmButtonText: "Si, borrar!"
                 }).then((result) => {
                     if (result.isConfirmed) {
+<<<<<<< HEAD
                         deleteActividades();
+=======
+                        deleteCategoria();
+>>>>>>> empleadoyjornada
                     }
                 });
             })
         });
     </script>
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> empleadoyjornada
